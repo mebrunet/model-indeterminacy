@@ -1,4 +1,4 @@
-name: rashomon
+name: indeterminacy
 channels:
   - pytorch
   - conda-forge
@@ -19,8 +19,8 @@ dependencies:
   - bottleneck=1.3.5=py38heec5a64_0
   - brotlipy=0.7.0=py38h1a28f6b_1002
   - bzip2=1.0.8=h620ffc9_4
-  - ca-certificates=2022.07.19=hca03da5_0
-  - certifi=2022.9.14=py38hca03da5_0
+  - ca-certificates=2022.9.24=h4653dfc_0
+  - certifi=2022.9.24=pyhd8ed1ab_0
   - cffi=1.15.1=py38h22df2f2_0
   - charset-normalizer=2.0.4=pyhd3eb1b0_0
   - cryptography=37.0.1=py38h834c97f_0
@@ -46,6 +46,7 @@ dependencies:
   - ipykernel=6.15.2=py38hca03da5_0
   - ipython=8.4.0=py38hca03da5_0
   - ipython_genutils=0.2.0=pyhd3eb1b0_1
+  - ipywidgets=8.0.2=pyhd8ed1ab_1
   - jedi=0.18.1=py38hca03da5_1
   - jinja2=3.0.3=pyhd3eb1b0_0
   - jpeg=9e=h1a28f6b_0
@@ -57,6 +58,7 @@ dependencies:
   - jupyterlab=3.2.9=pyhd3eb1b0_0
   - jupyterlab_pygments=0.1.2=py_0
   - jupyterlab_server=2.12.0=py38hca03da5_0
+  - jupyterlab_widgets=3.0.3=pyhd8ed1ab_0
   - kiwisolver=1.4.2=py38hc377ac9_0
   - lame=3.100=h1a28f6b_0
   - lcms2=2.12=hba8e193_0
@@ -85,6 +87,7 @@ dependencies:
   - libxml2=2.9.14=h8c5e841_0
   - llvm-openmp=14.0.6=hc6e5704_0
   - lz4-c=1.9.3=hc377ac9_0
+  - markupsafe=2.0.1=py38hea4295b_0
   - matplotlib=3.4.2=py38hca03da5_0
   - matplotlib-base=3.4.2=py38hda4e04e_0
   - matplotlib-inline=0.1.6=py38hca03da5_0
@@ -103,7 +106,7 @@ dependencies:
   - numpy-base=1.21.5=py38hadd41eb_3
   - openblas=0.3.21=openmp_hce0bd5c_1
   - openh264=1.8.0=h98b2900_0
-  - openssl=1.1.1q=h1a28f6b_0
+  - openssl=1.1.1s=h03a7124_0
   - packaging=21.3=pyhd3eb1b0_0
   - pandas=1.3.5=py38h9197a36_0
   - pandocfilters=1.5.0=pyhd3eb1b0_0
@@ -131,6 +134,7 @@ dependencies:
   - python=3.8.13=hbdb9e5c_0
   - python-dateutil=2.8.2=pyhd3eb1b0_0
   - python-fastjsonschema=2.16.2=py38hca03da5_0
+  - python_abi=3.8=2_cp38
   - pytorch=1.12.1=py3.8_0
   - pytz=2022.1=py38hca03da5_0
   - pyzmq=23.2.0=py38hc377ac9_0
@@ -159,6 +163,7 @@ dependencies:
   - webencodings=0.5.1=py38hca03da5_1
   - websocket-client=0.58.0=py38hca03da5_4
   - wheel=0.37.1=pyhd3eb1b0_0
+  - widgetsnbextension=4.0.3=pyhd8ed1ab_0
   - x264=1!152.20180806=h1a28f6b_0
   - xz=5.2.5=h1a28f6b_1
   - zeromq=4.3.4=hc377ac9_0
@@ -173,7 +178,6 @@ dependencies:
     - imagehash==4.3.0
     - joblib==1.0.1
     - llvmlite==0.39.1
-    - markupsafe==2.0.1
     - missingno==0.5.1
     - multimethod==1.9
     - networkx==2.8.6
@@ -191,4 +195,4 @@ dependencies:
     - tangled-up-in-unicode==0.1.0
     - tqdm==4.64.1
     - visions==0.7.4
-prefix: /Users/mebrunet/miniconda3/envs/rashomon
+prefix: /Users/mebrunet/miniconda3/envs/indeterminacy

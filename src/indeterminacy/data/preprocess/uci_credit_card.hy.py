@@ -46,19 +46,20 @@ X23 = amount paid in April, 2005.
 Y: client's behavior; Y=0 then not default, Y=1 then default
 '''
 
+# %% Imports
 import os
 
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import OneHotEncoder
 from pandas_profiling import ProfileReport
 
 
 # %% Globals
-RAW_DIR = '/Volumes/Transcend/raw_data'  # unzipped contents
-DATA_DIR = '/Volumes/Transcend/datasets'
-OUT_FOLDER = 'credit_card'
+RAW_DIR = '/Volumes/research/datasets/raw_data/UCI_Credit_Card'  # edit this (unzipped contents)
+DATA_DIR = '/Volumes/research/datasets'  # This should be the same folder for all datasets
+
+OUT_FOLDER = 'credit_card'   # don't change this, folder name is reused throughout codebase
 
 
 # %%

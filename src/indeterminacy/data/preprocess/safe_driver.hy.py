@@ -11,6 +11,7 @@ itself and "calc" is an calculated feature.
 Note this is a competition, so the test set does not have targets
 '''
 
+# %% Imports
 import os
 
 import numpy as np
@@ -21,9 +22,10 @@ from pandas_profiling import ProfileReport
 
 
 # %% Globals
-RAW_DIR = '/Volumes/Transcend/raw_data/porto-seguro-safe-driver-prediction'
-DATA_DIR = '/Volumes/Transcend/datasets'
-OUT_FOLDER = 'safe_driver'
+RAW_DIR = '/Volumes/research/datasets/raw_data/porto-seguro-safe-driver-prediction'  # edit this
+DATA_DIR = '/Volumes/research/datasets'  # This should be the same folder for all datasets
+
+OUT_FOLDER = 'safe_driver'  # don't change this, folder name is reused throughout codebase
 
 
 # %% -- Note the test set does not have targets
@@ -42,7 +44,7 @@ df.rename(lambda x: x[3:] if x.startswith('ps_') else x, axis='columns', inplace
 # %% Generate EDA Report
 profile = ProfileReport(df, title="Safe Driver", html={'style': {'full_width': True}},
                         sort=None)
-profile.to_file('results/EDA_safe_driver.html')
+profile.to_file(os.path.join(RAW_DIR, 'EDA_safe_driver.html'))
 
 
 # %% Address missing values

@@ -7,6 +7,7 @@ Variable descriptions in the provided Excel sheet
 Note this is a competition, so the test set does not have targets
 '''
 
+# %% Imports
 import os
 
 import numpy as np
@@ -15,10 +16,11 @@ from sklearn.model_selection import train_test_split
 from pandas_profiling import ProfileReport
 
 
-# %% Globals - 
-RAW_DIR = '/Volumes/Transcend/raw_data/GiveMeSomeCredit'
-DATA_DIR = '/Volumes/Transcend/datasets'
-OUT_FOLDER = 'give_me_credit'
+# %% Globals -
+RAW_DIR = '/Volumes/research/datasets/raw_data/GiveMeSomeCredit'  # edit this based on download loc
+DATA_DIR = '/Volumes/research/datasets'  # This should be the same folder for all datasets
+
+OUT_FOLDER = 'give_me_credit'  # don't change this, folder name is reused throughout codebase
 
 
 # %% -- Note the test set does not have targets
@@ -42,7 +44,7 @@ df.rename(columns={'SeriousDlqin2yrs': 'target',
 # %% Generate EDA Report
 profile = ProfileReport(df, title="Give Me Some Credit", html={'style': {'full_width': True}},
                         sort=None)
-profile.to_file('results/EDA_give_me_credit.html')
+profile.to_file(os.path.join(RAW_DIR, 'EDA_give_me_credit.html'))
 
 
 # %% Drop rows with missing data

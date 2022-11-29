@@ -1,5 +1,3 @@
-import socket
-
 import pytest
 import torch
 from pandas.api import types
@@ -8,11 +6,7 @@ import numpy as np
 from indeterminacy import data
 
 
-# Localize
-if socket.gethostname() == 'mebmbp':
-    DATASET_DIR = '/Volumes/Transcend/datasets'
-else:
-    DATASET_DIR = '/scratch/gobi1/mebrunet/datasets'
+DATASET_DIR = '/Volumes/research/datasets'
 
 
 @pytest.fixture
