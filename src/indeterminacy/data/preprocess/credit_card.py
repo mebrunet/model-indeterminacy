@@ -53,17 +53,22 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from pandas_profiling import ProfileReport
+from omegaconf import OmegaConf
 
 
-# %% Globals
-RAW_DIR = '/Volumes/research/datasets/raw_data/UCI_Credit_Card'  # edit this (unzipped contents)
-DATA_DIR = '/Volumes/research/datasets'  # This should be the same folder for all datasets
+# %% Load conifg
+config = OmegaConf.load('config/compute/local.yaml')  # assumes working directory is project root
 
+# %% Set Globals
+RAW_DIR = config.raw_data
+DATA_DIR = config.datapath
+RESULTS_DIR = config.resultpath
 OUT_FOLDER = 'credit_card'   # don't change this, folder name is reused throughout codebase
 
 
 # %%
-df = pd.read_csv(os.path.join(RAW_DIR, 'UCI_Credit_Card.csv')).drop(columns=['ID'])
+dataset_path = os.path.join(RAW_DIR, 'UCI_Credit_Card', 'UCI_Credit_Card.csv')
+df = pd.read_csv(dataset_path).drop(columns=['ID'])
 
 
 # %% Renaming
@@ -79,9 +84,10 @@ df['sex'] = df['sex'] - 1
 
 
 # %% Generate EDA Report
+os.makedirs(os.path.join(RESULTS_DIR), exist_ok=True)
 profile = ProfileReport(df, title="Credit Card", html={'style': {'full_width': True}},
                         sort=None)
-profile.to_file('results/EDA_credit_card.html')
+profile.to_file(os.path.join(RESULTS_DIR, 'EDA_credit_card.html'))
 
 
 # %% No missing values

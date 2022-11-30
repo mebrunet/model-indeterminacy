@@ -19,17 +19,22 @@ import pandas as pd
 from pandas.api import types
 from sklearn.model_selection import train_test_split
 from pandas_profiling import ProfileReport
+from omegaconf import OmegaConf
 
 
-# %% Globals
-RAW_DIR = '/Volumes/research/datasets/raw_data/porto-seguro-safe-driver-prediction'  # edit this
-DATA_DIR = '/Volumes/research/datasets'  # This should be the same folder for all datasets
+# %% Load conifg
+config = OmegaConf.load('config/compute/local.yaml')  # assumes working directory is project root
 
+# %% Set Globals
+RAW_DIR = config.raw_data
+DATA_DIR = config.datapath
+RESULTS_DIR = config.resultpath
 OUT_FOLDER = 'safe_driver'  # don't change this, folder name is reused throughout codebase
 
 
 # %% -- Note the test set does not have targets
-df = pd.read_csv(os.path.join(RAW_DIR, 'train.csv'), na_values=[-1]).drop(columns=['id'])
+dataset_path = os.path.join(RAW_DIR, 'porto-seguro-safe-driver-prediction', 'train.csv')
+df = pd.read_csv(dataset_path, na_values=[-1]).drop(columns=['id'])
 
 
 # %% -- Drop the calculated features (as per winning strategy)
@@ -42,9 +47,10 @@ df.rename(lambda x: x[3:] if x.startswith('ps_') else x, axis='columns', inplace
 
 
 # %% Generate EDA Report
+os.makedirs(os.path.join(RESULTS_DIR), exist_ok=True)
 profile = ProfileReport(df, title="Safe Driver", html={'style': {'full_width': True}},
                         sort=None)
-profile.to_file(os.path.join(RAW_DIR, 'EDA_safe_driver.html'))
+profile.to_file(os.path.join(RESULTS_DIR, 'EDA_safe_driver.html'))
 
 
 # %% Address missing values

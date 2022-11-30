@@ -14,17 +14,22 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from pandas_profiling import ProfileReport
+from omegaconf import OmegaConf
 
 
-# %% Globals -
-RAW_DIR = '/Volumes/research/datasets/raw_data/GiveMeSomeCredit'  # edit this based on download loc
-DATA_DIR = '/Volumes/research/datasets'  # This should be the same folder for all datasets
+# %% Load conifg
+config = OmegaConf.load('config/compute/local.yaml')  # assumes working directory is project root
 
+# %% Set Globals
+RAW_DIR = config.raw_data
+DATA_DIR = config.datapath
+RESULTS_DIR = config.resultpath
 OUT_FOLDER = 'give_me_credit'  # don't change this, folder name is reused throughout codebase
 
 
-# %% -- Note the test set does not have targets
-df = pd.read_csv(os.path.join(RAW_DIR, 'cs-training.csv')).drop(columns=["Unnamed: 0"])
+# %% -- Note the test set does not have targets, so only use training data
+dataset_path = os.path.join(RAW_DIR, 'GiveMeSomeCredit', 'cs-training.csv')
+df = pd.read_csv(dataset_path).drop(columns=["Unnamed: 0"])
 
 
 # %% Renaming -- shorten
@@ -42,9 +47,10 @@ df.rename(columns={'SeriousDlqin2yrs': 'target',
 
 
 # %% Generate EDA Report
+os.makedirs(os.path.join(RESULTS_DIR), exist_ok=True)
 profile = ProfileReport(df, title="Give Me Some Credit", html={'style': {'full_width': True}},
                         sort=None)
-profile.to_file(os.path.join(RAW_DIR, 'EDA_give_me_credit.html'))
+profile.to_file(os.path.join(RESULTS_DIR, 'EDA_give_me_credit.html'))
 
 
 # %% Drop rows with missing data

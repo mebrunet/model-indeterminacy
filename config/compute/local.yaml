@@ -1,0 +1,4 @@
+raw_data: /Volumes/research/datasets/raw_data  # where the (unzipped) Kaggle datasets can be found
+datapath: /Volumes/research/datasets  # folder where post-processed datasets will be saved / loaded
+resultpath: /Volumes/research/projects/indeterminacy  # base directory to save models and results
+device: mps  # compute device available to pytorch e.g gpu, mps, cpu
