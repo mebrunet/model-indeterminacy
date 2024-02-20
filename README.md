@@ -2,16 +2,6 @@
 Source code accompanying the paper
 [Implications of Model Indeterminacy for Explanations of Automated Decisions](https://openreview.net/forum?id=LzbrVf-l0Xq)
 
-## Preamble
-**Update 2022-11-29** - The code release is behind schedule.
-Expect to see new files and edits over the coming few weeks.
-I'll leave a note here when I get to an official release.
-
-This repository is a pared-down version of the code used internally for the project.
-We have done our best to ensure that it is complete and bug-free,
-however it is very possible that I broke things as I trimmed it down for public release.
-Don't hesitate to open a GitHub issue and I will attempt to assist you.
-
 ## Setup the codebase
 Clone the repository, then run
 
@@ -69,11 +59,7 @@ There's a quick check to make sure the data is loading properly
 pytest test/test_data.py
 ```
 
-## Training Models
-(Code and instructions to come.)
-
-## Generating Explanations
-(Code and instructions to come.)
-
-## Analysis
-(Code and instructions to come.)
+## Training models, generating explanations, running analysis
+The code for this will eventually be posted here. 
+If you would like to use it sooner, please reach out.
+I'm happy to make it available to individuals upon request.  
